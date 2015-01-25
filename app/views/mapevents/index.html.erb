@@ -1,0 +1,146 @@
+<nav id="no-gutters" class="navbar navbar-static-top navbar-inverse">
+	<div class="navbar-inner">
+		<div class="container-fluid vcenter">
+				<div class="col-xs-6 col-sm-3 col-md-4">
+					<h1>EventMap</h1>
+				</div>
+        <div class="col-xs-5 col-sm-3 col-md-3 col-lg-2 pull-right" >
+          <% if current_user %>
+              You are signed in as:<br> <%= current_user.email %> | <%= link_to "Logout", logout_path %>
+            <% else %>
+              <%= link_to "Login", login_path %> | <%= link_to "Signup", signup_path %>
+          <% end %>
+        </div>
+				<div class="col-xs-10 col-sm-6 col-md-4 pull-right">
+					<div class="container-fluid pull-right">
+						<button class="btn btn-success" data-toggle="modal" data-target="#addModal">Add New Event</button>
+						<button class="btn btn-info" data-toggle="modal" data-target="#aboutModal">About EventMap</button>
+					</div>
+				</div>  
+		</div>
+	</div>
+</nav>
+
+    <div id="map-container col-md-9">
+      <div id="map-canvas">
+      </div>
+    </div>    
+    
+    <div class="navbar-inner sidebar-menu">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#collapsed-categories">
+        <div class="above-map-background">
+          <span class="glyphicon glyphicon-align-justify"> Categories</span>
+        </div>
+      </button>
+    </div>
+
+    <div class="collapse navbar-collapse" id="collapsed-categories">
+  		<div class="col-xs-3 col-sm-2 col-md-2 col-lg-2 sidebar">
+  			<ul class="nav nav-sidebar">
+  				<li><%= link_to "All Categories", mapevents_path %></li>
+  				<li><%= link_to "Business", mapevents_path(category: 'business') %></li>
+  				<li><%= link_to "Film & Media", mapevents_path(category: 'filmmedia') %></li>
+  				<li><%= link_to "Arts", mapevents_path(category: 'arts') %></li>
+  				<li><%= link_to "Health", mapevents_path(category: 'health') %></li>
+  				<li><%= link_to "Music", mapevents_path(category: 'music') %></li>
+  				<li><%= link_to "Food & Drinks", mapevents_path(category: 'fooddrinks') %></li>
+  				<li><%= link_to "Hobbies", mapevents_path(category: 'hobbies') %></li>
+  				<li><%= link_to "Other", mapevents_path(category: 'other') %></li>
+  			</ul>
+  		</div>
+    </div>
+
+<!-- Add New Event Modal -->
+<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="addModalLabel">Add Event</h4>
+      </div>
+      <div class="modal-body">
+        <%= form_for @mapevent do |f| %>
+    			<%= f.text_field :title, class: "form-control", placeholder: "Name" %><br>
+    			<%= f.select :category, options_for_select([['Business', 'business'], ['Film & Media', 'filmmedia'], ['Arts', 'arts'], ['Health', 'health'], ['Music', 'music'], ['Food & Drinks', 'fooddrinks'], ['Hobbies', 'hobbies'], ['Other', 'other']]), class: "form-control" %><br>
+    			<%= f.text_field :address, class: "form-control", placeholder: "Address"  %><br>
+    			<%= f.text_field :city, class: "form-control", placeholder: "City"  %>
+    			<%= f.text_field :state, class: "form-control", placeholder: "State"  %>
+    			<%= f.text_field :zip, class: "form-control", placeholder: "Zip"  %><br>
+    			<%= f.text_area :description, class: "form-control", placeholder: "Description"  %><br>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <%= f.submit "Save Changes", class: "btn btn-primary" %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<!-- About EventMap Modal -->
+<div class="modal fade" id="aboutModal" tabindex="-1" role="dialog" aria-labelledby="aboutLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="aboutLabel">About EventMap</h4>
+      </div>
+      <div class="modal-body">
+        <p>EventMap was created to help those in need of finding something to do. We help people create events and find events.</p>
+        <p>We have the best engineer with months of experience using top quality development tools...no seriously.</p>
+      </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+function initialize() {
+  var myLatlng;
+  // The current zoom and location of where the map is centerd on
+  navigator.geolocation.getCurrentPosition(function(position) {
+      myLatlng =(new google.maps.LatLng(position.coords.latitude, position.coords.longitude));
+      // console.log(myLatlng);
+      // var myLatlng = makeLatLng(34.05, -118.2);
+      var mapOptions = {
+        zoom: 10,
+        center: myLatlng
+      };
+
+      // Create a map with a canvas
+      var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+
+
+      // The function to create a longitude and latitude in Google Maps
+      function makeLatLng(latitude, longitude) {
+        return new google.maps.LatLng(latitude, longitude);
+      }
+
+      //The function to create a marker in Google Maps
+      function makeMarker(latitude, longitude) {
+        return new google.maps.Marker({
+          position: makeLatLng(latitude, longitude),
+          map: map
+        });
+      }
+
+      // Add saved longitudes and latitudes to save on the map
+      <% @mapevents.each do |mapevent| %>
+
+      var <%= "marker" + mapevent.id %> = makeMarker(<%= mapevent.latitude %>, <%= mapevent.longitude %>);
+
+      var <%= "infoWindow" + mapevent.id %> = new google.maps.InfoWindow({
+          content: '<span><strong>Event:</strong> <%= mapevent.title %></span><br>  <span><strong>Address:</strong> <%= mapevent.address %></span><br> <span><%= mapevent.city %>, <%= mapevent.state %> <%= mapevent.zip %></span><br> <span><strong>Description:</strong> <%= mapevent.description %></span>'
+      });
+
+      google.maps.event.addListener(<%= "marker" + mapevent.id %>, 'click', function() {
+        <%= "infoWindow" + mapevent.id %>.open(map,<%= "marker" + mapevent.id %>);
+        setTimeout(function(){ <%= "infoWindow" + mapevent.id %>.close(map,<%= "marker" + mapevent.id %>); }, 2000);
+      });
+      <% end %>
+
+  });
+
+}
+
+// Loads Google Map on window load
+google.maps.event.addDomListener(window, 'load', initialize);
+</script>
