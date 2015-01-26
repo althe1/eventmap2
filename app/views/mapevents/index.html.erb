@@ -127,7 +127,7 @@ function initialize() {
         var <%= "marker" + mapevent.id %> = makeMarker(<%= mapevent.latitude %>, <%= mapevent.longitude %>);
 
         var <%= "infoWindow" + mapevent.id %> = new google.maps.InfoWindow({
-            content: '<span><strong>Event:</strong> <%= mapevent.title %></span><br>  <span><strong>Address:</strong> <%= mapevent.address %></span><br> <span><%= mapevent.city %>, <%= mapevent.state %> <%= mapevent.zip %></span><br> <span><strong>Description:</strong> <%= mapevent.description %></span>'
+            content: '<span><strong>Event:</strong> <%= mapevent.title %></span><br>  <span><strong>Address:</strong> <%= mapevent.address %></span><br> <span><%= mapevent.city %>, <%= mapevent.state %> <%= mapevent.zip %></span><br> <span><strong>Description:</strong> <%= mapevent.description %></span><br><%= link_to 'Edit Event', edit_mapevent_path(mapevent) %>'
         });
 
         google.maps.event.addListener(<%= "marker" + mapevent.id %>, 'click', function() {

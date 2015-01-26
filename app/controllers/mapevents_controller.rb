@@ -8,9 +8,9 @@ class MapeventsController < ApplicationController
 		end
 		@mapevent = Mapevent.new
 	end
-
+	
 	def events
-		@mapevents = Mapevents.all
+		@mapevents = Mapevent.all
 	end
 
 	def create
@@ -27,12 +27,26 @@ class MapeventsController < ApplicationController
 	end
 
 	def edit
+		@mapevent = Mapevent.find(params[:id])
 	end
 
 	def update
+		@mapevent = Mapevent.find(params[:id])
+
+	    if @mapevent.update(:mapevent).permit(:latitude, :longitude, :description, :title, :category, :address, :city, :state, :zip)
+	      redirect_to ingredients_path
+	    else
+	      render :edit
+	    end
+
 	end
 
 	def destroy
+		@mapevent = Mapevent.find(params[:id])
+    
+    	@mapevent.destroy
+    
+    	redirect_to events_path
 	end
 
 end
