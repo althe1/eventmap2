@@ -91,14 +91,13 @@
       </div>
   </div>
 </div>
-</div>
 
 <script type="text/javascript">
 function initialize() {
   var myLatlng;
   // The current zoom and location of where the map is centerd on
   navigator.geolocation.getCurrentPosition(function(position) {
-      myLatlng =(new google.maps.LatLng(34.066513, -118.254934));
+      myLatlng =(new google.maps.LatLng(position.coords.latitude, position.coords.longitude));
       // console.log(myLatlng);
       // var myLatlng = makeLatLng(34.05, -118.2);
       var mapOptions = {
