@@ -99,7 +99,6 @@ function initialize() {
   navigator.geolocation.getCurrentPosition(function(position) {
       myLatlng =(new google.maps.LatLng(position.coords.latitude, position.coords.longitude));
       // console.log(myLatlng);
-      // var myLatlng = makeLatLng(34.05, -118.2);
       var mapOptions = {
         zoom: 10,
         center: myLatlng

@@ -82,7 +82,7 @@ function initialize() {
     // The current zoom and location of where the map is centerd on
     navigator.geolocation.getCurrentPosition(function(position) {
     	  myLatlng =(new google.maps.LatLng(position.coords.latitude, position.coords.longitude));
-    	  console.log(myLatlng);
+    	  // console.log(myLatlng);
     var mapOptions = {
       zoom: 10,
       center: myLatlng
