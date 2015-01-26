@@ -96,8 +96,7 @@
 function initialize() {
   var myLatlng;
   // The current zoom and location of where the map is centerd on
-  navigator.geolocation.getCurrentPosition(function(position) {
-      myLatlng =(new google.maps.LatLng(position.coords.latitude, position.coords.longitude));
+      myLatlng =(new google.maps.LatLng(34,-118));
       // console.log(myLatlng);
       var mapOptions = {
         zoom: 10,
@@ -135,8 +134,6 @@ function initialize() {
           setTimeout(function(){ <%= "infoWindow" + mapevent.id %>.close(map,<%= "marker" + mapevent.id %>); }, 2000);
         });
       <% end %>
-
-  });
 
 }
 
