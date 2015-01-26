@@ -24,7 +24,6 @@ class MapeventsController < ApplicationController
 		else
 			render "index"
 		end
-		authorize! :create
 	end
 
 	def edit
