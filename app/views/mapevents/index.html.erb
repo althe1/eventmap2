@@ -4,7 +4,7 @@
 				<div class="col-xs-6 col-sm-3 col-md-4">
 					<h1>EventMap</h1>
 				</div>
-        <div class="col-xs-5 col-sm-3 col-md-3 col-lg-2 pull-right" >
+        <div class="col-xs-5 col-sm-3 col-md-3 col-lg-2 pull-right vcenter" >
           <% if current_user %>
               You are signed in as:<br> <%= current_user.email %> | <%= link_to "Logout", logout_path %>
             <% else %>
@@ -52,7 +52,7 @@
 
 <!-- Add New Event Modal -->
 <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-sm">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -61,12 +61,12 @@
       <div class="modal-body">
         <%= form_for @mapevent do |f| %>
     			<%= f.text_field :title, class: "form-control", placeholder: "Name" %><br>
-    			<%= f.select :category, options_for_select([['Business', 'business'], ['Film & Media', 'filmmedia'], ['Arts', 'arts'], ['Health', 'health'], ['Music', 'music'], ['Food & Drinks', 'fooddrinks'], ['Hobbies', 'hobbies'], ['Other', 'other']]), class: "form-control" %><br>
-    			<%= f.text_field :address, class: "form-control", placeholder: "Address"  %><br>
+    			<%= f.select :category, options_for_select([['Business', 'business'], ['Film & Media', 'filmmedia'], ['Arts', 'arts'], ['Health', 'health'], ['Music', 'music'], ['Food & Drinks', 'fooddrinks'], ['Hobbies', 'hobbies'], ['Other', 'other']]), class: "control-label form-control" %><br><br>
+    			<%= f.text_field :address, class: "form-control", placeholder: "Address" %>
     			<%= f.text_field :city, class: "form-control", placeholder: "City"  %>
     			<%= f.text_field :state, class: "form-control", placeholder: "State"  %>
-    			<%= f.text_field :zip, class: "form-control", placeholder: "Zip"  %><br>
-    			<%= f.text_area :description, class: "form-control", placeholder: "Description"  %><br>
+    			<%= f.text_field :zip, class: "form-control", placeholder: "Zip"  %>
+    			<%= f.text_area :description, class: "form-control", placeholder: "Description", :rows => "6"  %><br>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -87,7 +87,7 @@
       </div>
       <div class="modal-body">
         <p>EventMap was created to help those in need of finding something to do. We help people create events and find events.</p>
-        <p>We have the best engineer with months of experience using top quality development tools...no seriously.</p>
+        <p>We have a solo engineer with months of experience using top quality development tools.</p>
       </div>
   </div>
 </div>
@@ -124,16 +124,16 @@ function initialize() {
       // Add saved longitudes and latitudes to save on the map
       <% @mapevents.each do |mapevent| %>
 
-      var <%= "marker" + mapevent.id %> = makeMarker(<%= mapevent.latitude %>, <%= mapevent.longitude %>);
+        var <%= "marker" + mapevent.id %> = makeMarker(<%= mapevent.latitude %>, <%= mapevent.longitude %>);
 
-      var <%= "infoWindow" + mapevent.id %> = new google.maps.InfoWindow({
-          content: '<span><strong>Event:</strong> <%= mapevent.title %></span><br>  <span><strong>Address:</strong> <%= mapevent.address %></span><br> <span><%= mapevent.city %>, <%= mapevent.state %> <%= mapevent.zip %></span><br> <span><strong>Description:</strong> <%= mapevent.description %></span>'
-      });
+        var <%= "infoWindow" + mapevent.id %> = new google.maps.InfoWindow({
+            content: '<span><strong>Event:</strong> <%= mapevent.title %></span><br>  <span><strong>Address:</strong> <%= mapevent.address %></span><br> <span><%= mapevent.city %>, <%= mapevent.state %> <%= mapevent.zip %></span><br> <span><strong>Description:</strong> <%= mapevent.description %></span>'
+        });
 
-      google.maps.event.addListener(<%= "marker" + mapevent.id %>, 'click', function() {
-        <%= "infoWindow" + mapevent.id %>.open(map,<%= "marker" + mapevent.id %>);
-        setTimeout(function(){ <%= "infoWindow" + mapevent.id %>.close(map,<%= "marker" + mapevent.id %>); }, 2000);
-      });
+        google.maps.event.addListener(<%= "marker" + mapevent.id %>, 'click', function() {
+          <%= "infoWindow" + mapevent.id %>.open(map,<%= "marker" + mapevent.id %>);
+          setTimeout(function(){ <%= "infoWindow" + mapevent.id %>.close(map,<%= "marker" + mapevent.id %>); }, 2000);
+        });
       <% end %>
 
   });

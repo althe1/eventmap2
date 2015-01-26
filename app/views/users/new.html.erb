@@ -62,7 +62,9 @@
 	      	<% if @user.errors.messages[:password_confirmation].any? %>
 			<div>
 				<% @user.errors.messages[:password_confirmation].each do |message| %>
+				<div class="alert alert-danger" role="alert">
 					<%= message %>
+				</div>
 				<% end %>
 			</div>
 			<% end %><br>
