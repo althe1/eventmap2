@@ -11,8 +11,8 @@
 <div class="row">
 	<%= form_for :user, url: '/login' do |f| %>
 	<div id="contactform2" class="col-xs-5 col-xs-offset-3 col-sm-2 col-sm-offset-5 .col-md-6 .col-md-offset-3">
-		  <%= f.text_field :email, placeholder: "Email", class: "form-control" %><br> 
-		  <%= f.password_field :password, placeholder: "Password", class: "form-control" %><br>
+		  <%= f.text_field :email, placeholder: "Email", class: "form-control email required" %><br> 
+		  <%= f.password_field :password, placeholder: "Password", class: "form-control password required" %><br>
 		  <div class="text-right">
 		  	<%= f.submit "Submit", class: "btn btn-primary" %>
 		  </div>
