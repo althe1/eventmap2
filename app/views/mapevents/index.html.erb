@@ -36,7 +36,7 @@
 
     <div class="collapse navbar-collapse" id="collapsed-categories">
   		<div class="col-xs-3 col-sm-2 col-md-2 col-lg-2 sidebar">
-  			<ul class="nav nav-sidebar">
+  			<ul class="nav nav-sidebar reload">
   				<li><%= link_to "All Categories", mapevents_path %></li>
   				<li><%= link_to "Business", mapevents_path(category: 'business') %></li>
   				<li><%= link_to "Film & Media", mapevents_path(category: 'filmmedia') %></li>
@@ -132,6 +132,10 @@ function initialize() {
         google.maps.event.addListener(<%= "marker" + mapevent.id %>, 'click', function() {
           <%= "infoWindow" + mapevent.id %>.open(map,<%= "marker" + mapevent.id %>);
           setTimeout(function(){ <%= "infoWindow" + mapevent.id %>.close(map,<%= "marker" + mapevent.id %>); }, 2000);
+        });
+
+        $('.reload').on('click', function() {
+          google.maps.event.trigger(window, 'load', initialize);
         });
       <% end %>
 
