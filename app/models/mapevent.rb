@@ -10,7 +10,7 @@ class Mapevent
   field :state, type: String
   field :zip, type: String
 
-  validates :title, :category, :address, :state, :city, :zip, :description, presence: true
+  validates :title, :category, :address, :description, presence: true
 
   def full_address
   	return "#{address}, #{city}, #{state}, #{zip}"

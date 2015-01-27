@@ -36,16 +36,16 @@
 
     <div class="collapse navbar-collapse" id="collapsed-categories">
   		<div class="col-xs-3 col-sm-2 col-md-2 col-lg-2 sidebar">
-  			<ul class="nav nav-sidebar reload">
-  				<li class="reload"><%= link_to "All Categories", mapevents_path %></li>
-  				<li class="reload"><%= link_to "Business", mapevents_path(category: 'business') %></li>
-  				<li class="reload"><%= link_to "Film & Media", mapevents_path(category: 'filmmedia') %></li>
-  				<li class="reload"><%= link_to "Arts", mapevents_path(category: 'arts') %></li>
-  				<li class="reload"><%= link_to "Health", mapevents_path(category: 'health') %></li>
-  				<li class="reload"><%= link_to "Music", mapevents_path(category: 'music') %></li>
-  				<li class="reload"><%= link_to "Food & Drinks", mapevents_path(category: 'fooddrinks') %></li>
-  				<li class="reload"><%= link_to "Hobbies", mapevents_path(category: 'hobbies') %></li>
-  				<li class="reload"><%= link_to "Other", mapevents_path(category: 'other') %></li>
+  			<ul class="nav nav-sidebar">
+  				<li><%= link_to "All Categories", mapevents_path, 'data-no-turbolink' => true %></li>
+  				<li><%= link_to "Business", mapevents_path(category: 'business'), 'data-no-turbolink' => true %></li>
+  				<li><%= link_to "Film & Media", mapevents_path(category: 'filmmedia'), 'data-no-turbolink' => true %></li>
+  				<li><%= link_to "Arts", mapevents_path(category: 'arts'), 'data-no-turbolink' => true %></li>
+  				<li><%= link_to "Health", mapevents_path(category: 'health'), 'data-no-turbolink' => true %></li>
+  				<li><%= link_to "Music", mapevents_path(category: 'music'), 'data-no-turbolink' => true %></li>
+  				<li><%= link_to "Food & Drinks", mapevents_path(category: 'fooddrinks'), 'data-no-turbolink' => true %></li>
+  				<li><%= link_to "Hobbies", mapevents_path(category: 'hobbies'), 'data-no-turbolink' => true %></li>
+  				<li><%= link_to "Other", mapevents_path(category: 'other'), 'data-no-turbolink' => true %></li>
   			</ul>
   		</div>
     </div>
@@ -134,14 +134,9 @@ function initialize() {
           setTimeout(function(){ <%= "infoWindow" + mapevent.id %>.close(map,<%= "marker" + mapevent.id %>); }, 2000);
         });
 
-
       <% end %>
 }
 
-
-$('.reload').on('click', function() {
-  google.maps.event.addDomListener(window, 'load', initialize);
-});
 // Loads Google Map on window load
 google.maps.event.addDomListener(window, 'load', initialize);
 </script>
