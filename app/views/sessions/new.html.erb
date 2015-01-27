@@ -19,38 +19,3 @@
 	</div>
 </div>
 <% end %>
-<script type="text/javascript">
-function initialize() {
-  	var myLatlng;
-    // The current zoom and location of where the map is centerd on
-    navigator.geolocation.getCurrentPosition(function(position) {
-    	  myLatlng =(new google.maps.LatLng(34,-118));
-    	  // console.log(myLatlng);
-    var mapOptions = {
-      zoom: 10,
-      center: myLatlng
-    }
-
-    // Create a map with a canvas
-    var map = new google.maps.Map(document.getElementById('map-canvas2'), mapOptions);
-
-
-    // The function to create a longitude and latitude in Google Maps
-    function makeLatLng(latitude, longitude) {
-    	return new google.maps.LatLng(latitude, longitude)
-    }
-
-    //The function to create a marker in Google Maps
-    function makeMarker(latitude, longitude) {
-    	return new google.maps.Marker({
-    		position: makeLatLng(latitude, longitude),
-    		map: map,
-    	});
-    }
-
-   	});
-}
-
-// Loads Google Map on window load
-google.maps.event.addDomListener(window, 'load', initialize);
-</script>
