@@ -62,6 +62,18 @@
   font-family: 'Lobster', cursive;
   font-size: 40px;
 	}
+  a {
+  color: #F22613;
+  }
+  a:hover {
+  color: #e74c3c;
+  text-decoration: none;
+  }
+  a:active {
+  color: #e74c3c;
+  text-decoration: none;
+  }
+
 }
 
 .sidebar {
@@ -146,3 +158,6 @@
   color: black
 }
 
+.push-left {
+  margin-left: 20px;
+}

@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
       @current_user ||= User.find(session[:user_id]["$oid"])
     end
   end
+  
   helper_method :current_user
 
   def authorize

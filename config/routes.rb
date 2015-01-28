@@ -3,7 +3,8 @@ Rails.application.routes.draw do
   root to: "mapevents#index"
 
   resources :mapevents
-  resources :users
+  resources :users  
+
   get '/events' => 'mapevents#events'
   post '/mapevents/:id/eventsedit' => 'mapevents#eventsedit'
 
