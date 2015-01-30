@@ -1,77 +1,50 @@
-<div id="overlay2"></div>
-<div id="map-canvas2"></div>
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<div class="row">
-	<div id="logintitle" class="col-xs-5 col-xs-offset-4 col-sm-2 col-sm-offset-5 text-center">
-		<h1>Join the community</h1>	
-	</div>
-</div>
-<br>
-
-<div class="row">
-	<div id="contactform2" class="col-xs-5 col-xs-offset-4 col-sm-2 col-sm-offset-5 .col-md-6 .col-md-offset-3">
-
-	<%= form_for :user, url: "/users" do |f| %>
-	  <%= f.text_field :name, class: "form-control", placeholder: "Name"%>
-		  <% if @user.errors.messages[:name].any? %>
-			<div>
-				<% @user.errors.messages[:name].each do |message| %>
-					<div class="form-group has-error">
-		  				<label class="control-label" for="inputError1"><%= message %></label>
-		  				<input type="text" class="form-control" id="inputError1">
-					</div>
+<div class="container-fluid background-blue">
+		<div class="row">
+			<div id="logintitle" class="col-xs-5 col-xs-offset-4 col-sm-3 col-sm-offset-4 .col-md-5 .col-md-offset-3 text-center">
+				<h1>Join the community</h1>	
+			</div>
+		</div>
+		<div class="row">
+			<div id="contactform2" class="col-xs-5 col-xs-offset-4 col-sm-3 col-sm-offset-4 .col-md-5 .col-md-offset-3">
+				<%= form_for :user, url: "/users" do |f| %>
+				  <%= f.text_field :name, class: "form-control", placeholder: "Name"%>
+					  <% if @user.errors.messages[:name].any? %>
+						<% @user.errors.messages[:email].each do |message| %>
+					  		<%= message %>
+						<% end %>
+					  <% end %><br>
+				  <%= f.text_field :username, class: "form-control", placeholder: "Username" %>
+					  <% if @user.errors.messages[:username].any? %>
+							<% @user.errors.messages[:email].each do |message| %>
+					  			<%= message %>
+							<% end %>
+					  <% end %><br>
+				  <%= f.text_field :email, class: "form-control", placeholder: "Email" %>
+					  <% if @user.errors.messages[:email].any? %>
+						<div>
+							<% @user.errors.messages[:email].each do |message| %>
+					  			<%= message %>
+							<% end %>
+						</div>
+					  <% end %><br>
+				  <%= f.password_field :password, class: "form-control", placeholder: "Password" %>
+				    	<% if @user.errors.messages[:password].any? %>
+							<% @user.errors.messages[:password].each do |message| %>
+								<%= message %>
+							<% end %>
+						<% end %><br>
+				  <%= f.password_field :password_confirmation, class: "form-control", placeholder: "Password Confirmation" %>
+				      	<% if @user.errors.messages[:password_confirmation].any? %>
+						<div>
+							<% @user.errors.messages[:password_confirmation].each do |message| %>
+								<%= message %>
+							<% end %>
+						</div>
+						<% end %><br>
+					<div class="text-right">
+				  <%= f.submit 'Join!', class: "btn btn-success"%>
+				  </div>
 				<% end %>
 			</div>
-		  <% end %><br>
-	  <%= f.text_field :username, class: "form-control", placeholder: "Username" %>
-		  <% if @user.errors.messages[:username].any? %>
-			<div>
-				<% @user.errors.messages[:username].each do |message| %>
-					<div class="form-group has-error">
-		  				<label class="control-label" for="inputError1"><%= message %></label>
-		  				<input type="text" class="form-control" id="inputError1">
-					</div>
-				<% end %>
-			</div>
-		  <% end %><br>
-	  <%= f.text_field :email, class: "form-control", placeholder: "Email" %>
-		  <% if @user.errors.messages[:email].any? %>
-			<div>
-				<% @user.errors.messages[:email].each do |message| %>
-					<div class="form-group has-error">
-		  				<label class="control-label" for="inputError1"><%= message %></label>
-		  				<input type="text" class="form-control" id="inputError1">
-					</div>
-				<% end %>
-			</div>
-		  <% end %><br>
-	  <%= f.password_field :password, class: "form-control", placeholder: "Password" %>
-	    	<% if @user.errors.messages[:password].any? %>
-			<div>
-				<% @user.errors.messages[:password].each do |message| %>
-					<%= message %>
-				<% end %>
-			</div>
-			<% end %><br>
-	  <%= f.password_field :password_confirmation, class: "form-control", placeholder: "Password Confirmation" %>
-	      	<% if @user.errors.messages[:password_confirmation].any? %>
-			<div>
-				<% @user.errors.messages[:password_confirmation].each do |message| %>
-				<div class="alert alert-danger" role="alert">
-					<%= message %>
-				</div>
-				<% end %>
-			</div>
-			<% end %><br>
-		<div class="text-right">
-	  <%= f.submit 'Join!', class: "btn btn-success"%>
-	  </div>
-	<% end %>
-	</div>
-	</div>
+		</div>
 </div>

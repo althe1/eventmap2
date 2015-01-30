@@ -9,6 +9,7 @@ class Mapevent
   field :city, type: String
   field :state, type: String
   field :zip, type: String
+  has_one :user
 
   validates :title, :category, :address, :description, presence: true
 

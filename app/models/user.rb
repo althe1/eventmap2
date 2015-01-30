@@ -5,10 +5,11 @@ class User
   field :name, type: String
   field :username, type: String
   field :email, type: String
+  has_many :mapevents
 
-  validates :name, presence: true
-  validates :username, presence: true
-  validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create }
+  validates :name, presence: true, uniqueness: true
+  validates :username, presence: true, uniqueness: true
+  validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create }, uniqueness: true
   validates :password, length: {minimum: 6}
   validates :password_confirmation, presence: true
   validates_confirmation_of :password

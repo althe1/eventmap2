@@ -16,6 +16,9 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+body {
+  background-color: #3498DB;
+}
 #map-canvas2 { 
   background: transparent url('googlemapsla.png') no-repeat;
   height: 100%; 
@@ -113,7 +116,7 @@
  }
 
  .vcenter {
- 	padding-top: 5px;
+ 	padding-top: 9px;
  }
 
  .top {
@@ -160,4 +163,8 @@
 
 .push-left {
   margin-left: 20px;
+}
+
+.ontop {
+  z-index: 100;
 }

@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
         redirect_to mapevents_path
       else
         flash.now[:danger] = "Username or password incorrect."
-        render :new
+        redirect_to mapevents_path
       end
   end
 
