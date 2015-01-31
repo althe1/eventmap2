@@ -34,7 +34,7 @@ class MapeventsController < ApplicationController
 		@mapevent = Mapevent.find(params[:id])
 
 	    if @mapevent.update(:mapevent).permit(:latitude, :longitude, :description, :title, :category, :address, :city, :state, :zip)
-	      redirect_to ingredients_path
+	      redirect_to mapevents_path
 	    else
 	      render :edit
 	    end
