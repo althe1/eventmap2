@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
 
   def authorize
-    redirect_to login_path unless current_user
+    redirect_to signup_path unless current_user
   end
 
   ActionView::Base.field_error_proc = Proc.new do |html_tag, instance|

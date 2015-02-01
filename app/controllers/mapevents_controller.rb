@@ -1,5 +1,5 @@
 class MapeventsController < ApplicationController
-
+	before_filter :authorize, :except => [:index]
 	def index
 		if params[:category].nil?
 			@mapevents = Mapevent.all
