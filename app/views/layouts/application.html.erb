@@ -9,7 +9,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  
+
 <!-- Navigation Bar -->
 
 <div id="no-gutters" class="container-fluid">
@@ -21,7 +21,7 @@
   				</div>
           <div class="col-xs-5 col-sm-3 col-md-5 col-lg-5 pull-right" >
 
-            <!-- If current user, show signup sheet -->
+            <!-- If current user, show sign in info -->
 
             <% if current_user %>
                 <div class="pull-right">
@@ -30,10 +30,17 @@
 
                 Signed in as: <strong><%= current_user.username %></strong>
 
+                <!-- Link to Events button here -->
+
+                <%= link_to "My Events", events_path, class: "btn btn-default push-left", 'data-no-turbolink' => true %>
+
                 <!-- Logout button here -->
                 
-                <%= link_to "Logout", logout_path, class: "btn btn-default push-left", 'data-no-turbolink' => true %>
+                <%= link_to "Logout", logout_path, class: "btn btn-default", 'data-no-turbolink' => true %>
                 </div>
+
+             <!-- Else, show signup sheet --> 
+
               <% else %>
 
                <!-- Signup Sheet -->
