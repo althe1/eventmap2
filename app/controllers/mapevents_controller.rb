@@ -8,10 +8,6 @@ class MapeventsController < ApplicationController
 		end
 		@mapevent = Mapevent.new
 	end
-	
-	def events
-		@mapevents = Mapevent.all
-	end
 
 	def create
 		@mapevent = Mapevent.new(params.require(:mapevent).permit(:title, :category, :address, :city, :state, :zip, :description))

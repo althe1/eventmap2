@@ -3,6 +3,10 @@ class UsersController < ApplicationController
 		@user = User.new
 	end
 
+	def events
+		@user.mapevents = Mapevent.all
+	end
+
 	def create
 		@user = User.create(user_params)
 

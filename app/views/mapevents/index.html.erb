@@ -1,9 +1,13 @@
 
+    <!-- Map Canvas -->
+
     <div id="map-container col-md-9">
       <div id="map-canvas">
       </div>
     </div>    
-    
+
+    <!-- Category Legend -->
+
     <div class="navbar-inner sidebar-menu">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#collapsed-categories">
         <div class="above-map-background">
@@ -28,7 +32,8 @@
   		</div>
     </div>
 
-<!-- Add New Event Modal -->
+<!-- Popup modal to launch Add Events -->
+
 <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-sm">
     <div class="modal-content">
@@ -57,7 +62,8 @@
   </div>
 </div>
 
-<!-- About EventMap Modal -->
+<!-- Popup modal to launch About Page -->
+
 <div class="modal fade" id="aboutModal" tabindex="-1" role="dialog" aria-labelledby="aboutLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -74,7 +80,13 @@
   </div>
 </div>
 
+
+<!-- Google Maps API -->
+
+
 <script type="text/javascript">
+
+// Initialization of function
 function initialize() {
   var myLatlng;
   // The current zoom and location of where the map is centerd on
@@ -102,7 +114,7 @@ function initialize() {
         });
       }
 
-      // Add saved longitudes and latitudes to save on the map
+      // Add saved longitudes and latitudes to save on the map through a loop written in Ruby
       <% @mapevents.each do |mapevent| %>
 
         var <%= "marker" + mapevent.id %> = makeMarker(<%= mapevent.latitude %>, <%= mapevent.longitude %>);
