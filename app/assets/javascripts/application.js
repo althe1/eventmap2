@@ -15,4 +15,3 @@
 //= require bootstrap-sprockets
 //= require_tree .
 //= require turbolinks
-$('.dropdown-toggle').dropdown();
