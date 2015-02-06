@@ -13,12 +13,15 @@
 <!-- Navigation Bar -->
 
 <div id="no-gutters" class="container-fluid">
-  <nav id="no-gutters" class="navbar navbar-static-top navbar-inverse">
+  <nav id="no-gutters" class="navbar navbar-fixed-top navbar-inverse">
   	<div class="navbar-inner">
   		<div class="container-fluid vcenter">
   				<div class="col-xs-3 col-sm-2 col-md-2">
   					<h1><%= link_to "EventMap", mapevents_path, 'data-no-turbolink' => true %></h1>
   				</div>
+          <div>
+            <%= link_to "Menu", "#menu-toggle", class: "btn btn-primary hidden-md hidden-lg", id:"menu-toggle", 'data-no-turbolink' => true %>
+          </div>
           <div class="col-xs-5 col-sm-3 col-md-5 col-lg-5 pull-right" >
 
             <!-- If current user, show sign in info -->
@@ -32,11 +35,11 @@
 
                 <!-- Link to Events button here -->
 
-                <%= link_to "My Events", users_path, class: "btn btn-default push-left", 'data-no-turbolink' => true %>
+                <%= link_to "My Events", users_path, class: "btn btn-primary push-left", 'data-no-turbolink' => true %>
 
                 <!-- Logout button here -->
                 
-                <%= link_to "Logout", logout_path, class: "btn btn-default", 'data-no-turbolink' => true %>
+                <%= link_to "Logout", logout_path, class: "btn btn-primary", 'data-no-turbolink' => true %>
                 </div>
 
              <!-- Else, show signup sheet --> 
@@ -45,11 +48,11 @@
 
                <!-- Signup Sheet -->
 
-              <%= link_to "Signup", signup_path, class: "btn btn-default push-left pull-right" %>   
+              <%= link_to "Signup", signup_path, class: "btn btn-primary push-left pull-right" %>   
                 <%= form_for :user, url: '/login', html: {class: "form-inline"} do |f| %>
                     <%= f.text_field :email, placeholder: "Email", class: "form-control" %>
                     <%= f.password_field :password, placeholder: "Password", class: "form-control" %>
-                    <%= f.submit "Sign in", class: "btn btn-primary" %>
+                    <%= f.submit "Sign in", class: "btn btn-default" %>
                 <% end %>
             <% end %>
           </div>

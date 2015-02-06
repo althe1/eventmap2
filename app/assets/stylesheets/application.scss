@@ -51,32 +51,11 @@ nav {
     padding: 7px;
 }
 
-.sidebar {
-  background-color: #f5f5f5;
-  float: left;
-  margin-left: 70px;
-  min-height: 20px;
-  background-color: rgba(255,255,255,0.6);
-  z-index: 100;
-  position: absolute;
-}
-
-.sidebar-menu {
-  height: 20px;
-  margin-top: 20px;
-  padding: 0;
-  float: right;
-  .above-map-background {
-    background-color: rgba(255,255,255,0.6);
-    border-radius: 5px;
-    padding: 5px;
-  }
-}
-
 #map-container {
    height: 100%;
-   min-width: 200px;
-   position: absolute;
+   min-width: 100%;
+   position: fixed;
+   float: right;
  }
 
 
@@ -84,7 +63,7 @@ nav {
    height: 100%;
    min-height: 500px;
    width: 100%;
-   position: absolute;
+   position: relative;
    float: left;
  }
 
@@ -171,3 +150,4 @@ nav {
 .ontop {
   z-index: 100;
 }
+

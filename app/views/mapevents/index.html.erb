@@ -1,36 +1,27 @@
+<!-- Map Canvas -->
 
-    <!-- Map Canvas -->
+<div id="map-container col-lg-5">
+  <div id="map-canvas">
+  </div>
+</div>
 
-    <div id="map-container col-md-9">
-      <div id="map-canvas">
-      </div>
-    </div>    
 
-    <!-- Category Legend -->
-
-    <div class="navbar-inner sidebar-menu">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#collapsed-categories">
-        <div class="above-map-background">
-          <span class="glyphicon glyphicon-align-justify"> Categories</span>
-        </div>
-      </button>
-    </div>
-
-    <div class="collapse navbar-collapse" id="collapsed-categories">
-  		<div class="col-xs-3 col-sm-2 col-md-2 col-lg-2 sidebar">
-  			<ul class="nav nav-sidebar">
-  				<li><%= link_to "All Categories", mapevents_path, 'data-no-turbolink' => true %></li>
-  				<li><%= link_to "Business", mapevents_path(category: 'business'), 'data-no-turbolink' => true %></li>
-  				<li><%= link_to "Film & Media", mapevents_path(category: 'filmmedia'), 'data-no-turbolink' => true %></li>
-  				<li><%= link_to "Arts", mapevents_path(category: 'arts'), 'data-no-turbolink' => true %></li>
-  				<li><%= link_to "Health", mapevents_path(category: 'health'), 'data-no-turbolink' => true %></li>
-  				<li><%= link_to "Music", mapevents_path(category: 'music'), 'data-no-turbolink' => true %></li>
-  				<li><%= link_to "Food & Drinks", mapevents_path(category: 'fooddrinks'), 'data-no-turbolink' => true %></li>
-  				<li><%= link_to "Hobbies", mapevents_path(category: 'hobbies'), 'data-no-turbolink' => true %></li>
-  				<li><%= link_to "Other", mapevents_path(category: 'other'), 'data-no-turbolink' => true %></li>
-  			</ul>
-  		</div>
-    </div>
+<div id="sidebar-wrapper">
+  <div class="sidebar-nav">
+    <ul class="nav nav-sidebar">
+      <li><%= link_to "All Categories", mapevents_path, 'data-no-turbolink' => true %></li>
+      <li><%= link_to "Business", mapevents_path(category: 'business'), 'data-no-turbolink' => true %></li>
+      <li><%= link_to "Film & Media", mapevents_path(category: 'filmmedia'), 'data-no-turbolink' => true %></li>
+      <li><%= link_to "Arts", mapevents_path(category: 'arts'), 'data-no-turbolink' => true %></li>
+      <li><%= link_to "Health", mapevents_path(category: 'health'), 'data-no-turbolink' => true %></li>
+      <li><%= link_to "Music", mapevents_path(category: 'music'), 'data-no-turbolink' => true %></li>
+      <li><%= link_to "Food & Drinks", mapevents_path(category: 'fooddrinks'), 'data-no-turbolink' => true %></li>
+      <li><%= link_to "Hobbies", mapevents_path(category: 'hobbies'), 'data-no-turbolink' => true %></li>
+      <li><%= link_to "Other", mapevents_path(category: 'other'), 'data-no-turbolink' => true %></li>
+    </ul>
+  </div>
+</div>
+    
 
 <!-- Popup modal to launch Add Events -->
 
