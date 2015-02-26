@@ -32,6 +32,10 @@ gem 'figaro'
 gem 'geokit'
 #Twelve facto app for production
 gem 'rails_12factor', group: :production
+#Bullet for increasing application performance
+gem "bullet", :group => "development"
+# Action Caching
+gem 'actionpack-action_caching'
 
 group :development, :test do
 
