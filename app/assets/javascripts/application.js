@@ -15,3 +15,8 @@
 //= require bootstrap-sprockets
 //= require_tree .
 //= require turbolinks
+// $('#add_marker').live('click', function(event){
+//     event.preventDefault();
+//     $.post($(this).attr('data-href') + "?address=" + $('#address').val(), function(data){} );
+// });
+
