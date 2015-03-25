@@ -13,7 +13,8 @@ class Mapevent
 
   validates :title, :category, :address, :description, presence: true
 
-  def full_address
+  def self.full_address
   	return "#{address}, #{city}, #{state}, #{zip}"
   end
+
 end
