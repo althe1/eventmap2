@@ -17,4 +17,22 @@ class Mapevent
   	return "#{address}, #{city}, #{state}, #{zip}"
   end
 
+  def self.eventbrite
+
+    event ||= "restaurants"
+    latitude ||= 34
+    longitude ||= -118
+    within ||= '10mi'
+    category ||= 110
+
+    auth = { query: { token: ENV['eventbrite_key'], q: event, categories: category, 'location.longitude': longitude,  'location.latitude': latitude,  'location.within': within }}
+    search_url = "https://www.eventbriteapi.com/v3/events/search"
+
+    response = HTTParty.get search_url, auth
+    # parsed_json = JSON.parse response
+
+    return response
+
+  end    
+
 end

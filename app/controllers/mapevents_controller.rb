@@ -1,5 +1,5 @@
 class MapeventsController < ApplicationController
-	before_filter :authorize, :except => [:index]
+	before_filter :authorize, :except => [:index, :eventbrite]
 	def index
 		if params[:category].nil?
 			@mapevents = Mapevent.all
@@ -7,6 +7,11 @@ class MapeventsController < ApplicationController
 			@mapevents = Mapevent.where(category: params[:category])
 		end
 		@mapevent = Mapevent.new
+	end
+
+	def eventbrite
+		@events = Mapevent.eventbrite
+		render json: @events
 	end
 
 	def create

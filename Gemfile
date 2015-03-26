@@ -36,6 +36,12 @@ gem 'rails_12factor', group: :production
 gem "bullet", :group => "development"
 # Action Caching
 gem 'actionpack-action_caching'
+# HTTParty is for request to API's
+gem 'httparty'
+# Hashie easily conerts parsed JSON to objects
+gem 'hashie'
+# A simple HTTP and REST client for Ruby
+gem 'rest-client', '~> 1.8.0'
 
 group :development, :test do
 
